@@ -1,12 +1,13 @@
-const Navigation = props => (
-  <ul>
-      {props.posts.map((post,index) => (
-          <li key={index}>
-            <a href="#" onClick>{post.slug}</a>
-          </li>
-      ))}
-  </ul>
-)  
- 
+import styles from '../styles/navigation.module.css';
 
-export default Navigation;
+function Navigation(props) {
+  return (
+    <nav className={styles.Navigation}>
+      {props.posts.map((post, index) => ( 
+          <a href="#" onClick={() => props.onClick(index)}>{post.slug}</a>
+      ))}
+    </nav>
+  )
+};
+
+export default Navigation

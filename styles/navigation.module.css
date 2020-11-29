@@ -1,15 +1,19 @@
-/* header main font*/
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
-.Header{
+.Navigation{
     font-family: Lato, serif;
-    font-size: 7vw;
+    font-size: 3vw;
     margin-top: 0px;
     background-color: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 @media only screen and (max-width: 768px){
-    .Header {
+    .Navigation {
         text-align: center;
+        font-size: 5vw;
     }
 }
