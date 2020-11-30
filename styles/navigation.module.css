@@ -9,6 +9,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    display: flex;
 }
 
 @media only screen and (max-width: 768px){
@@ -16,4 +17,24 @@
         text-align: center;
         font-size: 5vw;
     }
+}
+
+.Button {
+    height: 60px;
+    width: 60px; /* A fixed width as the default */
+    background-color: rgba(255, 255, 255, 0.5);
+    border:0px;
+}
+
+.Button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.Title{ 
+    flex-grow: 1; /* Set the middle element to grow and stretch */
+    text-align: center;
+}
+
+.Button  + .Button  { 
+    margin-left: 2%; 
 }
