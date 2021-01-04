@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+.Text{
+    margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+}
+
+@media only screen and (max-width: 768px){
+    .Navigation {
+        text-align: center;
+        font-size: 5vw;
+    }
+}

@@ -1,47 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Layout from '../components/Layout.js';
-import {getAllPosts} from '../logic/Posts.js';
+import { getAllPosts, getLinkedPosts } from '../lib/postUtils.js';
 import Navigation from '../components/Navigation.js';
+import Text from '../components/Text.js';
 
-class PhotoBlog extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-        currentPost : 0, /* last post as default when landing on homepage */
-    };
-  }
+function PhotoBlog(props) {
 
-  handleNavigationClick(i){
-    this.setState({
-      currentPost: i,
-    })
-  }
-
-  render(){
-    return (
-      <Layout backgroundImage={this.props.allPosts[this.state.currentPost].featuredImage}>
-        <Navigation 
-          posts={this.props.allPosts} 
-          current={this.state.currentPost}
-          onClick={(i) => this.handleNavigationClick(i)}
-        />
-      </Layout>
-    )
-  }
+  return (
+    <Layout backgroundImage={props.lastPost.featuredImage}>
+      <Text
+        post={props.lastPost.content} />
+      <Navigation
+        linkedPosts={props.linkedPosts}
+        title={props.lastPost.title}
+      />
+    </Layout>
+  )
 }
 
 export default PhotoBlog
 
 export async function getStaticProps() {
-    const allPosts = getAllPosts([
-      'title',
-      'date',
-      'slug',
-      'featuredImage'
-    ])
-  
-    return {
-      props: { allPosts },
+  const posts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'featuredImage',
+    'content',
+  ])
+
+  const _lastPost = posts[0];
+  const _linkedPosts = getLinkedPosts(_lastPost.slug);
+
+  return {
+    props: {
+      lastPost: _lastPost,
+      linkedPosts: _linkedPosts,
     }
   }
+}

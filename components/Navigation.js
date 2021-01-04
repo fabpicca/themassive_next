@@ -8,9 +8,9 @@ import styles from '../styles/navigation.module.css';
 function Navigation(props) {
   return (
     <nav className={styles.Navigation}>
-      {props.current > 0 && <button className={styles.Button} type="button" onClick={() => props.onClick(props.current - 1)}>&lt;</button>}
-      <div className={styles.Title}>{props.posts[props.current].title}</div>
-      {props.current < props.posts.length -1 && <button className={styles.Button} type="button" onClick={() => props.onClick(props.current + 1)}>&gt;</button>}
+      {props.linkedPosts.before ? (<a className={styles.Button} href={props.linkedPosts.before}>&lt;</a>) : ""}
+      <div className={styles.Title}>{props.title}</div>
+      {props.linkedPosts.after ? (<a className={styles.Button} href={props.linkedPosts.after}>&gt;</a>) : ""}
     </nav>
   )
 };
